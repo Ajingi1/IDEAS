@@ -1,0 +1,57 @@
+{% extends 'layout.html' %}
+{% load static %} <!-- Load the static tag library -->
+
+{% block title %}HUMAIRA STC{% endblock %}
+
+{% block content %}
+<div class="text-bg-dark container-fluid main  pb-4">
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="jumbotron jumbotron-fluid">
+                <h1 class="display-4 p-5 text-center">{{ news.title|upper }}</h1>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container-fluid bg-light">
+    <div class="row">
+        <div class="col"></div>
+        <div class="col-sm-12 col-md-10">
+            <div class="container-fluid mt-5">
+                <div class="row">
+                    <div class="col-sm-12 col-md-4 order-sm-1">
+                        <h2>Latest News</h2>
+                        <div class="news-list">
+                            {% for news in latest_news %}
+                            <div class="news d-flex">
+                                <div class="me-3">
+                                    <img src="{% static '/images/default_news.jpeg' %}" alt="Default News Image"
+                                        class="img-fluid">
+                                </div>
+                                <a href="{% url 'news_detail' news_id=news.id %}">
+                                    <div>
+                                        <div class="news-date">{{ news.time }}</div>
+                                        <div class="news-title">{{ news.title }}</div>
+                                    </div>
+                                </a>
+                            </div>
+                            {% empty %}
+                            <p>No news available.</p>
+                            {% endfor %}
+                        </div>
+                    </div>
+                    <div class="col-sm-12 col-md-8 order-sm-2 section-light">
+                        <h1 class="display-4 text-center">{{ news.title|upper }}</h1>
+                        <p class="news-time">{{ news.time }}</p>
+                        {% for paragraph in paragraphs %}
+                        <p>{{ paragraph }}</p>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col"></div>
+    </div>
+</div>
+{% endblock %}

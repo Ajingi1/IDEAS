@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+{% load static %} <!-- Load the static tag library -->
+<html lang="en">
+
+<head>
+    <!-- Meta data  -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Bootstrap  https://getbootstrap.com/docs/5.3/getting-started/-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+        crossorigin="anonymous"></script>
+
+    <!-- Icon  -->
+    <!-- awesome icon  -->
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+
+    <!-- local styles -->
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+
+    <!-- Dynamic tittle -->
+    <title>{% block title %} {% endblock %}</title>
+</head>
+
+<body>
+    <div class="wrapper">
+        <!-- Shared Navbar -->
+        <div>
+            {% if user.is_authenticated %}
+            <!-- Navbar for logged-in users -->
+            {% include 'partials/logged_in_navbar.html' %}
+            {% else %}
+            <!-- Navbar for guests (not logged in) -->
+            {% include 'partials/guest_navbar.html' %}
+            {% endif %}
+        </div>
+        {% if request.path == '/' or request.path == '/about/' %}
+            <!-- Shared Header -->
+            {% include 'partials/header.html' %}
+        {% endif %}
+        <main class="main">
+            {% block content %}
+            {% endblock %}
+        </main>
+
+
+        <!-- Shared Footer -->
+        {% include 'partials/footer.html' %}
+    </div>
+    <!-- Include your JS files here -->
+    <!-- <script src="../static/scripts.js"></script> -->
+</body>
+
+</html>

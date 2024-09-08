@@ -1,0 +1,157 @@
+{% extends 'layout.html' %}
+{% load static %} <!-- Load the static tag library -->
+
+{% block title %}HUMAIRA STC{% endblock %}
+
+{% block content %}
+<div class="container-fluid">
+    <div class="row">
+        <!-- Profile Picture Column -->
+        <div class="col-sm-12 col-md-6 col-lg-4">
+            <div class="profile-picture-box">
+                {% if student.profile_picture %}
+                <img src="{{ student.profile_picture.url }}" alt="Profile Picture" class="img-fluid rounded-circle">
+                {% else %}
+                <img src="{% static 'images/default-image.jpg' %}" alt="Default Profile Picture"
+                    class="img-fluid rounded-circle">
+                {% endif %}
+            </div>
+        </div>
+
+
+        <!-- user Name and School Number -->
+        <div class="col-sm-12 col-md-6 col-lg-8">
+            <div class="additional-content-box bg-red">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-sm-12 col-md-12">
+                            <div class="user-title">
+                                <p>
+                                    <span>Student Name:</span>
+                                    <span class="role-name">{{ student.user.first_name}}</span>
+                                </p>
+                                <p>
+                                    <span>Student Number:</span>
+                                    <span class="role-number">{{ student.student_id }}</span>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Student profile  -->
+    <div class="row">
+        <div class="col"></div>
+        <div class="col-sm-12 col-md-10 col-lg-8">
+
+
+            <div class="row p-5">
+                <!-- Student Information -->
+                <div class="col-sm-12 col-lg-6">
+                    <div class="user-info">
+                        <h4>Student Information</h4>
+                        <table class="table table-borderless">
+                            <tbody>
+                                <tr>
+                                    <td>Student Full Name:</td>
+                                    <td>{{ student.user.first_name }} {{ student.user.last_name }}</td>
+                                </tr>
+                                <tr>
+                                    <td>Student ID:</td>
+                                    <td>{{ student.student_id }}</td>
+                                </tr>
+                                <tr>
+                                    <td>Date of Birth:</td>
+                                    <td>{{ student.date_of_birth }}</td>
+                                </tr>
+                                <tr>
+                                    <td>Gender:</td>
+                                    <td>{{ student.get_gender_display }}</td>
+                                </tr>
+                                <tr>
+                                    <td>Session:</td>
+                                    <td>{{ student.get_category_display }}</td>
+                                </tr>
+                                <tr>
+                                    <td>Address:</td>
+                                    <td>{{ student.address }}</td>
+                                </tr>
+                                <tr>
+                                    <td>Phone Number:</td>
+                                    <td>{{ student.phone_number }}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- Parent Information -->
+                <div class="col-sm-12 col-lg-6">
+                    <div class="user-info">
+                        <h4>Parent Information</h4>
+                        <table class="table table-borderless">
+                            <tbody>
+                                <tr>
+                                    <td>Father's Name:</td>
+                                    <td>{{ student.father_name }}</td>
+                                </tr>
+                                <tr>
+                                    <td>Mother's Name:</td>
+                                    <td>{{ student.mother_name }}</td>
+                                </tr>
+                                <tr>
+                                    <td>Parent Phone Number:</td>
+                                    <td>{{ student.parent_phone_number }}</td>
+                                </tr>
+                                <tr>
+                                    <td>Parent Email:</td>
+                                    <td>{{ student.parent_email }}</td>
+                                </tr>
+                                <tr>
+                                    <td>Parent Address:</td>
+                                    <td>{{ student.parent_address }}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- Emergency Information -->
+                <div class="col-sm-12 col-lg-6">
+                    <div class="user-info">
+                        <h4>Emergency Contact Information</h4>
+                        <table class="table table-borderless">
+                            <tbody>
+                                <tr>
+                                    <td>Emergency Contact Name:</td>
+                                    <td>{{ student.emergency_contact_name }}</td>
+                                </tr>
+                                <tr>
+                                    <td>Relationship:</td>
+                                    <td>{{ student.emergency_contact_relationship }}</td>
+                                </tr>
+                                <tr>
+                                    <td>Emergency Contact Phone Number:</td>
+                                    <td>{{ student.emergency_contact_phone_number }}</td>
+                                </tr>
+                                <tr>
+                                    <td>Emergency Contact Address:</td>
+                                    <td>{{ student.emergency_contact_address }}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col"></div>
+    </div>
+
+</div>
+
+
+{% endblock %}

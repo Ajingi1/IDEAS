@@ -1,0 +1,44 @@
+<!-- templates/login.html -->
+{% extends 'layout.html' %}
+{% load static %}  <!-- Load the static tag library -->
+
+{% block title %}Log in page{% endblock %}
+
+{% block content %}
+<div class="container-fluid p-5">
+    <div class="row">
+        <div class="col"></div>
+        <div class="col-sm-12 col-md-6 col-lg-4">
+            <div class="card text-center">
+                <div class="card-body">
+                    <h2>Log In</h2>
+                    <form action="{% url 'login' %}" method="post" >
+                        {% csrf_token %}
+                        <div class="mb-3">
+                            <!-- <label for="username">Username Or Email</label> -->
+                            <input type="text" name="username" id="username" placeholder="Username Or Email"
+                                autocomplete="off" class="form-control mx-auto form-component-width">
+                        </div>
+                        <div class="mb-3">
+                            <!-- <label for="password">Password</label> -->
+                            <input type="password" name="password" id="password" placeholder="Password"
+                                autocomplete="off" class="form-control mx-auto form-component-width">
+                        </div>
+                        <div class="mb-3 form-component-width mx-auto">
+                            <a href="#" class="forgot-link">Forgot Password?</a>
+                        </div>
+                        <div class="mb-3">
+                            <button class="btn btn-primary form-control mx-auto form-component-width" type="submit">Log In</button>
+                        </div>
+                        
+                        <div class="mb-3">
+                            <p class="card-text">Don't have an account? <a href="{% url 'signup' %}" class="signup-link">Sign Up</a></p>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="col"></div>
+    </div>
+</div>
+{% endblock %}

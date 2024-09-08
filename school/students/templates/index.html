@@ -1,0 +1,104 @@
+<!-- templates/index.html -->
+{% extends 'layout.html' %}
+{% load static %} <!-- Load the static tag library -->
+
+{% block title %}HUMAIRA STC{% endblock %}
+
+{% block content %}
+<div class="container-fluid main-index">
+    <div class="row">
+        <div class="col"></div>
+        <div class="col-12 col-md-10">
+            <div class="container-fluid pb-5">
+                <div class="row pb-5">
+                    <div class="col-sm-4 col-md-2 col-lg-1">
+                        <h2>NEWS</h2>
+                        <a href="#" class="custom_link underline">All News</a>
+                    </div>
+                    <div class="col-sm-8 col-md-10 col-lg-11">
+                        <hr class="bg-dark my-4" style="height: 5px;">
+                    </div>
+                </div>
+
+                <div class="row">
+                    <!-- <p>{{ news.content }}</p> -->
+                    {% for news in latest_news %}
+                    <div class=" col-sm-12 col-md-6 col-lg-3 news-container">
+                        <a href="{% url 'news_detail' news_id=news.id %}" class="custom_link">
+                            <div class="image-container">
+                                {% if news.image %}
+                                <img src="{{ news.image.url }}" alt="{{ news.title }}" class="img-fluid">
+                                {% else %}
+                                <img src="{% static 'default_news.jpeg' %}" alt="Default News Image" class="img-fluid">
+                                {% endif %}
+                                <p class="news-time">{{ news.time }}</p>
+                                <h5 class="news-title">{{ news.title }}</h5>
+                            </div>
+                        </a>
+                    </div>
+                    {% empty %}
+                    <p>No news available.</p>
+                    {% endfor %}
+                </div>
+            </div>
+
+
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col"></div>
+                    <div class="col-sm-12 col-md-12">
+                        <div class="row">
+                            <!-- News box -->
+                            <div class="col-sm-12 col-md-7 ">
+                                <h2>News</h2>
+                                <hr>
+                                <div class="news-box">
+                                    {% for news in latest_news %}
+                                        <div class="news d-flex">
+                                            <div class="me-3">
+                                                <img src="{% static '/images/default_news.jpeg' %}" alt="Default News Image" class="img-fluid">
+                                            </div>
+                                            <a href="{% url 'news_detail' news_id=news.id %}" class="custom_link">
+                                            <div>
+                                                <div class="news-date">{{ news.time }}</div>
+                                                <div class="news-title">{{ news.title }}</div>
+                                            </div>
+                                            </a>
+                                        </div>
+                                    {% empty %}
+                                        <p>No news available.</p>
+                                    {% endfor %}
+                                </div>
+                            </div>
+                            <!-- Announcement box -->
+                            <div class="col-sm-12 col-md-5">
+                                <h2>Announcement</h2>
+                                <hr>
+                                <div class="annouc-box">
+                                    {% for announcement in latest_announcements %}
+                                        <div class="announcement d-flex">
+                                            <div class="me-3">
+                                                <img src="{% static 'images/announcement.png' %}" alt="Announcement">
+                                            </div>
+                                            <a href="{% url 'announcement_detail' announcement.id %}" class="announcement-link custom_link">
+                                            <div>
+                                                <div class="announcement-date">{{ announcement.time }}</div>
+                                                <div class="announcement-title">{{ announcement.title }}</div>
+                                            </div>
+                                            </a>
+                                        </div>
+                                    {% empty %}
+                                        <p>No Announcement available.</p>
+                                    {% endfor %}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col"></div>
+                </div>
+            </div>
+        </div>
+        <div class="col"></div>
+    </div>
+</div>
+{% endblock %}

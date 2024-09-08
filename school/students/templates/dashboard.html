@@ -1,0 +1,152 @@
+{% extends 'layout.html' %}
+{% load static %} <!-- Load the static tag library -->
+
+{% block title %}HUMAIRA STC{% endblock %}
+
+{% block content %}
+<div class="container-fluid">
+    <div class="row">
+        <!-- Profile Picture Column -->
+        <div class="col-sm-12 col-md-6 col-lg-4">
+            <div class="profile-picture-box">
+                {% if student.profile_picture %}
+                <img src="{{ student.profile_picture.url }}" alt="Profile Picture" class="img-fluid rounded-circle">
+                {% else %}
+                <img src="{% static 'images/default-image.jpg' %}" alt="Default Profile Picture"
+                    class="img-fluid rounded-circle">
+                {% endif %}
+
+            </div>
+        </div>
+        
+
+        <!-- user Name and School Number -->
+        <div class="col-sm-12 col-md-6 col-lg-8">
+            <div class="additional-content-box bg-red">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-sm-12 col-md-12">
+                            <div class="user-title">
+                                <p>
+                                    <span>Student Name:</span>
+                                    <span class="role-name">{{ student.user.first_name}}</span>
+                                </p>
+                                <p>
+                                    <span>Student Number:</span>
+                                    <span class="role-number">{{ student.student_id }}</span>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="row">
+        <div class="col"></div>
+        <div class="col-sm-12 col-md-6 col-md-8 p-5">
+            <h3 class="inner-header text-center"><span>Student Information</span></h3>
+            {% if student %}
+            <div class="row">
+                <div class="col-sm-12 col-lg-6">
+                    <div class="user-info">
+
+                        <table class="table table-borderless">
+                            <tbody>
+                                <tr>
+                                    <td>Student Full Name:</td>
+                                    <td>{{ student.user.first_name }} {{ student.user.last_name }}</td>
+                                </tr>
+                                <tr>
+                                    <td>Father Name:</td>
+                                    <td>{{ student.father_name }}</td>
+                                </tr>
+                                <tr>
+                                    <td>Mother Name:</td>
+                                    <td>{{ student.mother_name }}</td>
+                                </tr>
+                                <tr>
+                                    <td>Student Section:</td>
+                                    <td>{{ student.category }}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="col-sm-12 col-lg-6">
+                    <div class="user-info">
+                        <table class="table table-borderless">
+                            <tbody>
+                                <tr>
+                                    <td>Student Number:</td>
+                                    <td>{{ student.student_id }}</td>
+                                </tr>
+                                <tr>
+                                    <td>Date of Birth:</td>
+                                    <td>{{ student.date_of_birth }}</td>
+                                </tr>
+
+                                <tr>
+                                    <td>Year:</td>
+                                    <td>{{ student.current_year}}</td>
+                                </tr>
+                                <tr>
+                                    <td>Deparment:</td>
+                                    <td>{{ student.department }}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            {% else %}
+            <p>No student data available.</p>
+            {% endif %}
+        </div>
+        <div class="col"></div>
+    </div>
+
+
+
+    <div class="row">
+        <div class="col"></div>
+        <div class="col-sm-12 col-md-6 col-md-8 p-5">
+            <h3 class="inner-header text-center"><span>Student Enrolled Courses</span></h3>
+            {% if enrollments %}
+            <table class="table table-borderless">
+                <thead>
+                    <tr>
+                        <th class="d-none d-sm-table-cell">Course Code</th>
+                        <th class="d-none d-sm-table-cell">Course Name</th>
+                        <th class="d-none d-sm-table-cell">Completion Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for enrollment in enrollments %}
+                    <tr>
+                        <td class="d-none d-sm-table-cell">{{ enrollment.course.course_code }}</td>
+                        <td class="d-none d-sm-table-cell">{{ enrollment.course.course_name }}</td>
+                        <td class="d-none d-sm-table-cell">
+                            {% if enrollment.completed %}
+                            Completed
+                            {% else %}
+                            Incomplete
+                            {% endif %}
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+            {% else %}
+            <p>No Enrollment available.</p>
+            {% endif %}
+        </div>
+        <div class="col"></div>
+        <p class="text-center" style="font-weight: bolder;">For Incomplete course enrollment contact student affair</p>
+    </div>
+</div>
+</div>
+{% endblock %}

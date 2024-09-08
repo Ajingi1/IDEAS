@@ -1,0 +1,56 @@
+{% extends 'layout.html' %}
+{% load static %}
+
+{% block title %}HUMAIRA STC - Announcements{% endblock %}
+
+{% block content %}
+<div class="text-bg-dark container-fluid main pb-4">
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="jumbotron jumbotron-fluid">
+                <h1 class="display-4 p-5 text-center">{{ announcement.title|upper }}</h1>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container-fluid bg-light">
+    <div class="row">
+        <div class="col"></div>
+        <div class="col-sm-12 col-md-10">
+            <div class="container-fluid mt-5">
+                <div class="row">
+                    <div class="col-sm-12 col-md-4 order-sm-1">
+                        <h2>Latest Announcements</h2>
+                        <div class="announcement-list">
+                            {% for announcement in latest_announcements %}
+                            <div class="announcement d-flex">
+                                <div class="me-3">
+                                    <img src="{% static 'images/announcement.png' %}" alt="Announcement">
+                                </div>
+                                <a href="{% url 'announcement_detail' announcement.id %}" class="announcement-link">
+                                    <div>
+                                        <div class="announcement-date">{{ announcement.time }}</div>
+                                        <div class="announcement-title">{{ announcement.title }}</div>
+                                    </div>
+                                </a>
+                            </div>
+                            {% empty %}
+                            <p>No Announcement available.</p>
+                            {% endfor %}
+                        </div>
+                    </div>
+                    <div class="col-sm-12 col-md-8 order-sm-2 section-light">
+                        <h1 class="display-4 text-center">{{ announcement.title|title }}</h1>
+                        <p class="announcement-time">{{ announcement.time }}</p>
+                        {% for paragraph in paragraphs %}
+                        <p>{{ paragraph }}</p>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col"></div>
+    </div>
+</div>
+{% endblock %}

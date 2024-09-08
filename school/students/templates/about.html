@@ -1,0 +1,133 @@
+{% extends 'layout.html' %}
+{% load static %}
+
+{% block title %}About HSTC{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <h1 class="mb-4 text-center pb-3">Humaira Science and Techincal Collage</h1>
+
+    <div class="row">
+        <div class="col-lg-6 mb-4">
+            <div class="card">
+                <div class="card-body">
+                    <h2 class="card-title">Junior Secondary School (JSS)</h2>
+                    <p>The Junior Secondary School offers a broad-based curriculum designed to provide a strong foundation in core subjects such as Mathematics, English Language, Basic Science, Social Studies, and Civic Education. Students also engage in introductory courses in technical and vocational subjects.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-6 mb-4">
+            <img src="{% static 'images/junior-secondary.jpg' %}" class="img-fluid" alt="Junior Secondary School" style="float: left; margin-right: 15px;">
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-12 mb-4">
+            <h2 class="mb-4">Senior Secondary School (SSS)</h2>
+
+            <div class="row">
+                <div class="col-md-4 mb-4">
+                    <div class="card">
+                        <img src="{% static 'images/engineering.jpg' %}" class="card-img-top" alt="Electrical Engineering">
+                        <div class="card-body">
+                            <h5 class="card-title">Electrical Engineering (ELE)</h5>
+                            <p class="card-text">Focuses on the principles of electricity, electronics, and electromagnetism.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4 mb-4">
+                    <div class="card">
+                        <img src="{% static 'images/engineering.jpg' %}" class="card-img-top" alt="Mechanical Engineering">
+                        <div class="card-body">
+                            <h5 class="card-title">Mechanical Engineering (MEC)</h5>
+                            <p class="card-text">Covers the fundamentals of mechanics, kinematics, and thermodynamics.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4 mb-4">
+                    <div class="card">
+                        <img src="{% static 'images/engineering.jpg' %}" class="card-img-top" alt="Automobile Engineering">
+                        <div class="card-body">
+                            <h5 class="card-title">Automobile Engineering (AUT)</h5>
+                            <p class="card-text">Provides training in vehicle design, manufacturing, and maintenance.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4 mb-4">
+                    <div class="card">
+                        <img src="{% static 'images/technology.jpg' %}" class="card-img-top" alt="Building Technology">
+                        <div class="card-body">
+                            <h5 class="card-title">Building Technology (BLD)</h5>
+                            <p class="card-text">Focuses on construction principles, materials, and techniques.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4 mb-4">
+                    <div class="card">
+                        <img src="{% static 'images/technology.jpg' %}" class="card-img-top" alt="Woodwork Technology">
+                        <div class="card-body">
+                            <h5 class="card-title">Woodwork Technology (WDW)</h5>
+                            <p class="card-text">Offers instruction in carpentry and woodworking.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4 mb-4">
+                    <div class="card">
+                        <img src="{% static 'images/technology.jpg' %}" class="card-img-top" alt="Plumbing and Pipefitting">
+                        <div class="card-body">
+                            <h5 class="card-title">Plumbing and Pipefitting (PLB)</h5>
+                            <p class="card-text">Prepares students for careers in plumbing and pipe installation.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4 mb-4">
+                    <div class="card">
+                        <img src="{% static 'images/engineering.jpg' %}" class="card-img-top" alt="Computer Science/ICT">
+                        <div class="card-body">
+                            <h5 class="card-title">Computer Science/ICT (CSC)</h5>
+                            <p class="card-text">Provides knowledge of computer systems, programming, and IT.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4 mb-4">
+                    <div class="card">
+                        <img src="{% static 'images/technology.jpg' %}" class="card-img-top" alt="Painting and Decorating">
+                        <div class="card-body">
+                            <h5 class="card-title">Painting and Decorating (PNT)</h5>
+                            <p class="card-text">Teaches the art and techniques of painting and decorating.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4 mb-4">
+                    <div class="card">
+                        <img src="{% static 'images/technology.jpg' %}" class="card-img-top" alt="Welding and Fabrication">
+                        <div class="card-body">
+                            <h5 class="card-title">Welding and Fabrication (WLD)</h5>
+                            <p class="card-text">Focuses on welding techniques and metal fabrication.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4 mb-4">
+                    <div class="card">
+                        <img src="{% static 'images/engineering.jpg' %}" class="card-img-top" alt="Radio and Television Electronic">
+                        <div class="card-body">
+                            <h5 class="card-title">Radio and Television Electronic (TRV)</h5>
+                            <p class="card-text">Covers principles related to radio and television systems.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
